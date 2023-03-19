@@ -37,18 +37,14 @@
 </template>
 
 <script setup>
-import sourceData from "@/data.json";
-import { ref } from "vue";
+import { useStore } from 'vuex'
+
+const store = useStore()
 
 const {threads} = defineProps(['threads']);
-const posts = ref(sourceData.posts);
-const users = ref(sourceData.users);
 
-const postById = (postId) => {
-  return posts.value.find((post) => post.id === postId);
-};
 const userById = (userId) => {
-  return users.value.find((user) => user.id === userId);
+  return store.state.users.find((user) => user.id === userId);
 };
 </script>
 

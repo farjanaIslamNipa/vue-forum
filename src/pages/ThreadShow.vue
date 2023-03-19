@@ -8,18 +8,19 @@
   </div>
 </template>
   
-  <script setup>
-import sourceData from "@/data.json";
+<script setup>
 import PostList from "@/components/PostList.vue";
 import PostEditor from "@/components/PostEditor.vue";
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
+import { useStore } from 'vuex'
 
-const threads = ref(sourceData.threads);
-const posts = ref(sourceData.posts);
+const store = useStore()
+
+const threads = ref(store.state.threads);
+const posts = ref(store.state.posts);
 const route = useRoute();
 
-const paramId = route.params.id
 const thread = computed(() => {
   return threads.value.find((thread) => thread.id === route.params.id);
 });

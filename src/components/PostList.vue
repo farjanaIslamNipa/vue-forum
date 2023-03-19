@@ -28,37 +28,19 @@
           <div class="post-date text-faded">
             <AppDate :timestamp="post.publishedAt" />
           </div>
-<!-- 
-          <div class="reactions">
-            <ul>
-              <li>💡</li>
-              <li>❤️</li>
-              <li>👎</li>
-              <li>👍</li>
-              <li>👌</li>
-            </ul>
-            <button class="btn-xsmall"><span class="emoji">❤️</span>️ 3</button>
-            <button class="btn-xsmall active-reaction">
-              <span class="emoji">👌️</span>️ 1
-            </button>
-            <button class="btn-xsmall">
-              + <i class="fa fa-smile-o emoji"></i>
-            </button>
-          </div> -->
         </div>
       </div>
 </template>
 
 <script setup>
-import sourceData from "@/data.json";
+import { useStore } from 'vuex'
 
-import { ref } from "vue";
+const store = useStore()
 
 const {posts} = defineProps(['posts'])
 
-const users = ref(sourceData.users);
 const userById = (userId) => {
-  return users.value.find((user) => user.id === userId);
+  return store.state.users.find((user) => user.id === userId);
 };
 
 </script>
