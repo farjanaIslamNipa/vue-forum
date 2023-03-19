@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-center py-4">Welcome to the forum</h1>
+    <h1 class="text-center py-4 push-top">Welcome to the forum</h1>
   <div class="">
     <div>
         <!-- <ForumList :forums="forums" /> -->

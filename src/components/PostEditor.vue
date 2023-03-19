@@ -27,9 +27,7 @@ const emit = defineEmits(['save-post'])
 const props = defineProps(['paramId'])
 
 const save = () => {
-  const postId = 'gggg' + Math.random()
   const post = {
-    id: postId,
     text: text.value,
     publishedAt: Math.floor(Date.now() / 1000),
     userId: 'ALXhxjwgY9PinwNGHpfai6OWyDu2'

@@ -24,6 +24,12 @@ const router = createRouter({
       props: true
     },
     {
+      path: '/profile/:id',
+      name: 'Profile',
+      component: () => import('@/pages/Profile.vue'),
+      props: true
+    },
+    {
       path: '/thread/:id',
       name: 'ThreadShow',
       component: () => import('@/pages/ThreadShow.vue'),

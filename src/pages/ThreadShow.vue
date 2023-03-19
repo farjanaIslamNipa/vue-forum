@@ -17,9 +17,12 @@ import { useStore } from 'vuex'
 
 const store = useStore()
 
-const threads = ref(store.state.threads);
-const posts = ref(store.state.posts);
+// const threads = ref(store.state.threads);
+// const posts = ref(store.state.posts);
 const route = useRoute();
+
+const threads = computed(() => store.state.threads )
+const posts = computed(() => store.state.posts )
 
 const thread = computed(() => {
   return threads.value.find((thread) => thread.id === route.params.id);
@@ -36,9 +39,9 @@ const addPost = (eventData) => {
     ...eventData.post,
     threadId: route.params.id
   }
-  posts.value.push(post)
-  thread.value.posts.push(post.id)
-  // newPostText.value = ''
+  store.dispatch('createPost', post)
+  // posts.value.push(post)
+  // thread.value.posts.push(post.id)
 }
 </script>
   
