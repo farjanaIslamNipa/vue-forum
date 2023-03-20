@@ -29,8 +29,6 @@ const props = defineProps(['paramId'])
 const save = () => {
   const post = {
     text: text.value,
-    publishedAt: Math.floor(Date.now() / 1000),
-    userId: 'ALXhxjwgY9PinwNGHpfai6OWyDu2'
   }
   emit('save-post', {post})
   text.value = ''

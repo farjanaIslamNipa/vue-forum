@@ -18,14 +18,14 @@
                 <ul>
 
                     <li class="navbar-user">
-                        <a href="#">
+                        <router-link :to="{name: 'Profile'}">
                             <img class="avatar-small"
                             :src="authUser.avatar" :alt="authUser.name">
                             <span  class="flex items-center">
                                 {{ authUser.name }}
                                 <img class="icon-profile ml-2" src="@/assets/img/svg/arrow-profile.svg" alt="">
                             </span>
-                        </a>
+                        </router-link>
 
                         <!-- dropdown menu -->
                         <!-- add class "active-drop" to show the dropdown -->
