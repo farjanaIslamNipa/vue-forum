@@ -1,6 +1,13 @@
 <template>
     <div>
-        <form @submit.prevent="save" action="">
+        <div class="container mx-auto">
+            <h1>Create new thread in <span>{{ forum.name }}</span></h1>
+            <form @submit.prevent="" action="">
+              <div class="form-group">
+                <label for="thread_title">Title:</label>
+                <input v-model="title" type="text" id="thread_title" class="form-input" name="title" >
+              </div>
+
               <div class="form-group">
                 <label for="thread_content">Content:</label>
                 <textarea v-model="text" id="thread_content" class="form-input" name="content" rows="8" cols="140"></textarea>
@@ -11,25 +18,20 @@
                 <button class="btn btn-blue" type="submit" name="Publish">Publish </button>
               </div>
           </form>
+        </div>
     </div>
 </template>
-
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 
-const text = ref("")
-const emit = defineEmits(['save-post'])
-const props = defineProps(['paramId'])
+const {forum} = defineProps({
+  forum: {type: Object, required: true}
+})
+
+const title = ref('')
+const text = ref('')
 
 const save = () => {
-  const post = {
-    text: text.value,
-  }
-  emit('save-post', {post})
-  text.value = ''
+
 }
 </script>
-
-<style scoped>
-
-</style>

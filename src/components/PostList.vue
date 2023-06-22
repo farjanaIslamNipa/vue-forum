@@ -19,6 +19,7 @@
 
           <div class="post-content">
             <div>
+              <h3 v-if="post.title">{{ post.title }}</h3>
               <p>
                 {{ post.text }}
               </p>
