@@ -45,6 +45,8 @@ export default createStore({
 
             const thread = { title, publishedAt, userId, id }
             commit('setThread', {thread})
+            commit('appendThreadToUser', {userId, threadId: id})
+            commit('appendThreadToForum', {forumId, threadId: id})
             dispatch('createPost', { text, threadId: id})
         },
 
@@ -67,7 +69,18 @@ export default createStore({
         },
         appendPostToThread(state, {postId, threadId}){
             const thread = state.threads.find(thread => thread.id === threadId)
+            thread.posts = thread.posts || []
             thread.posts.push(postId)
+        },
+        appendPostToForum(state, {forumId, threadId}){
+            const forum = state.threads.find(forum => forum.id === forumId)
+            forum.posts = forum.posts || []
+            forum.posts.push(threadId)  
+        },
+        appendPostToUser(state, {userId, threadId}){
+            const user = state.threads.find(user => user.id === userId)
+            user.posts = user.posts || []
+            user.posts.push(threadId) 
         }
     }
 })

@@ -2,7 +2,7 @@
     <div>
         <div class="container mx-auto">
             <h1>Create new thread in <span>{{ forum.name }}</span></h1>
-            <form @submit.prevent="" action="">
+            <form @submit.prevent="save" action="">
               <div class="form-group">
                 <label for="thread_title">Title:</label>
                 <input v-model="title" type="text" id="thread_title" class="form-input" name="title" >
@@ -23,6 +23,9 @@
 </template>
 <script setup>
 import { ref } from 'vue';
+import { useStore } from 'vuex'
+
+const store = useStore()
 
 const {forum} = defineProps({
   forum: {type: Object, required: true}
@@ -32,6 +35,10 @@ const title = ref('')
 const text = ref('')
 
 const save = () => {
-
+  store.dispatch('createThread', {
+    forumId: forum.value.id,
+    title: title.value,
+    text: text.value
+  })
 }
 </script>
